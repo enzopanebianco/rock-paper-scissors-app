@@ -8,8 +8,8 @@ export const Container = styled.div`
   padding: 8px;
   margin: 0 auto;
   width: 45%;
-  height: 100%;
-  transform: translateY(40px);
+  height: 150px;
+  transform: translateY(20px);
   align-items: center;
 `;
 export const Title = styled.div`
@@ -17,12 +17,12 @@ export const Title = styled.div`
     margin-left: 10px;
     position: relative;
     flex-direction: column;
-
+    justify-content: center;
     strong{
         color:#f3f3f3;
-        font-size: 28px;
+        font-size: 25px;
         text-shadow: 1px 0px 1px #222;
-        transition: 3s ease-in ;
+        
     }
     strong:nth-child(1){
         transform: translateY(10px);
@@ -30,6 +30,12 @@ export const Title = styled.div`
    
     strong:nth-child(3){
         transform: translateY(-10px);
+    }
+    strong:nth-child(4){
+        transform: translateY(-20px);
+    }
+    strong:nth-child(5){
+        transform: translateY(-30px);
     }
 `;
 export const Score = styled.div`

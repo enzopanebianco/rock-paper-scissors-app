@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   justify-content: center;
- transform:translateY(80px);
+ transform:translateY(40px);
 `;
 
 export const ImgBackground = styled.img`
@@ -20,12 +20,16 @@ export const Content = styled.div`
   
     article:first-child{
         display: flex;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
+        
+    }
+    article:nth-child(2){
+      display: flex;
+      transform: translateY(-30px);
+      gap: 200px;
     }
     article:last-child{
-        margin-top: 30px;
+        display: flex;
+        gap: 50px;
     }
 `;
 

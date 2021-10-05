@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import * as S from './styles';
-import rulesImg from '../../assets/img/image-rules.svg';
+import rulesImg from '../../assets/img/image-rules-bonus.svg';
 function ButtonRules() {
     const [modal, setModal] = useState(false);
 

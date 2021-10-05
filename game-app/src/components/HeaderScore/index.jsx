@@ -13,6 +13,8 @@ function HeaderScore() {
                     <strong>ROCK</strong>
                     <strong>PAPER</strong>
                     <strong>SCISSORS</strong>
+                    <strong>LIZARD</strong>
+                    <strong>SPOCK</strong>
                 </S.Title>
                 <S.Score>
                     <p>SCORE</p>

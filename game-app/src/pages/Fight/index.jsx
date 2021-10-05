@@ -1,7 +1,7 @@
 import React, { Fragment, useCallback, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ButtonToFight from '../../components/ButtonToFight';
-import options from '../../colors/choose';
+import options from '../../data/choose';
 import * as S from './styles';
 import { calcFight } from '../../store/actions';
 import { useHistory } from 'react-router';
@@ -16,7 +16,7 @@ function Fight() {
     const getRandomArbitrary = useCallback(() => {
         let randomId;
         if (!opponentChoose) {
-            randomId = Math.floor(Math.random() * 3 + 1);
+            randomId = Math.floor(Math.random() * 5 + 1);
             setOpponentChoose(options.find(option => option.id === randomId));
         }
         dispatch(calcFight(choose.title, opponentChoose?.title));
@@ -45,7 +45,9 @@ function Fight() {
                         <button onClick={() => history.push('/')} >PLAY AGAIN</button>
                     </S.Result>
                 }
+
                 <S.ItemChoose victory={result === 'Lose' ? true : false}>
+                    
                     <span />
                     <S.Title>THE HOUSE PICKED</S.Title>
                     {opponentChoose ?

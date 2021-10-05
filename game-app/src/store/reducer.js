@@ -1,5 +1,5 @@
 import * as actions from './actions';
-import options from '../colors/choose';
+import options from '../data/choose';
 
 const INITIAL_STATE = {
     choose: {
@@ -21,7 +21,7 @@ export default function reducer(state = INITIAL_STATE, action) {
             let result;
             let newScore;
             const { choose, opponent } = action;
-            if (opponent&&choose) {
+            if (opponent && choose) {
                 if (choose === opponent) {
                     result = 'Draw'
                 }
@@ -33,12 +33,24 @@ export default function reducer(state = INITIAL_STATE, action) {
                         else if (opponent === 'rock') {
                             result = 'Win'
                         }
+                        else if (opponent === 'spock') {
+                            result = 'Win'
+                        }
+                        else if (opponent === 'lizard') {
+                            result = 'Lose'
+                        }
                     }
                     else if (choose === 'scissors') {
                         if (opponent === 'rock') {
                             result = 'Lose'
                         }
                         else if (opponent === 'paper') {
+                            result = 'Win'
+                        }
+                        else if (opponent === 'spock') {
+                            result = 'Lose'
+                        }
+                        else if (opponent === 'lizard') {
                             result = 'Win'
                         }
                     }
@@ -49,19 +61,60 @@ export default function reducer(state = INITIAL_STATE, action) {
                         else if (opponent === 'scissors') {
                             result = 'Win'
                         }
+                        else if (opponent === 'spock') {
+                            result = 'Lose'
+                        }
+                        else if (opponent === 'lizard') {
+                            result = 'Win'
+                        }
+                    }
+                    else if (choose === 'lizard') {
+                        if (opponent === 'paper') {
+                            result = 'Win'
+                        }
+                        else if (opponent === 'scissors') {
+                            result = 'Lose'
+                        }
+                        else if (opponent === 'spock') {
+                            result = 'Win'
+                        }
+                        else if (opponent === 'rock') {
+                            result = 'Lose'
+                        }
+                    }
+                    else if (choose === 'spock') {
+                        if (opponent === 'paper') {
+                            result = 'Lose'
+                        }
+                        else if (opponent === 'scissors') {
+                            result = 'Win'
+                        }
+                        else if (opponent === 'lizard') {
+                            result = 'Lose'
+                        }
+                        else if (opponent === 'rock') {
+                            result = 'Win'
+                        }
+                    }
+
+                }
+                if (localStorage.getItem('score')) {
+                    if (result === 'Win') {
+                        newScore = parseInt(localStorage.getItem('score'), 10) + 1;
+
+                        localStorage.setItem('score', newScore.toString());
+                    }
+                    else if (result === 'Lose') {
+                        newScore = parseInt(localStorage.getItem('score'), 10) - 1;
+                        localStorage.setItem('score', newScore.toString());
+                    }
+                    else if (result === 'Draw') {
+                        newScore = parseInt(localStorage.getItem('score'), 10);
                     }
                 }
-               
-                if (result === 'Win') {
-                    newScore = parseInt(localStorage.getItem('score'), 10) + 1;
+                else {
+                    newScore = 0;
                     localStorage.setItem('score', newScore.toString());
-                }
-                else if (result === 'Lose') {
-                    newScore = parseInt(localStorage.getItem('score'), 10) - 1;
-                    localStorage.setItem('score', newScore.toString());
-                }
-                else if (result === 'Draw') {
-                    newScore = parseInt(localStorage.getItem('score'), 10);
                 }
                 return { ...state, result, score: newScore };
             }
